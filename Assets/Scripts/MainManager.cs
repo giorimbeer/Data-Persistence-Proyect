@@ -37,7 +37,8 @@ public class MainManager : MonoBehaviour
             }
         }
 
-        SetBestScore();
+        Singleton.Instance.LoadData();
+        bestScoreText.text = "Best Score: " + Singleton.Instance.name + ": " + Singleton.Instance.points;
     }
 
     private void Update()
@@ -64,12 +65,7 @@ public class MainManager : MonoBehaviour
         }
     }
 
-    void SetBestScore()
-    {
-        
-        bestScoreText.text = "Best Score: " + Singleton.Instance.name + ": " + Singleton.Instance.points;
-        print(Singleton.Instance.points);
-    }
+  
 
     void AddPoint(int point)
     {
@@ -82,7 +78,8 @@ public class MainManager : MonoBehaviour
         if (m_Points > Singleton.Instance.points )
         {
             Singleton.Instance.points = m_Points;
-            SetBestScore();
+            Singleton.Instance.SaveData();
+ 
         }
         m_GameOver = true;
         GameOverText.SetActive(true);

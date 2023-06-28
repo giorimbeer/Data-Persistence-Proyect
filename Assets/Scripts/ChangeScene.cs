@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-using System.IO;
 using TMPro;
 
 public class ChangeScene : MonoBehaviour
@@ -19,8 +18,8 @@ public class ChangeScene : MonoBehaviour
 
     public void Main()
     {
-        Singleton.Instance.name = inputName.text;
-        print(inputName.text);
+        Singleton.Instance.nameActual = inputName.text;
+        if (Singleton.Instance.nameActual == "") Singleton.Instance.nameActual = "default name";
         SceneManager.LoadScene(1);
     }
 
